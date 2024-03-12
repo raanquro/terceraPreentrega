@@ -1,0 +1,50 @@
+{% extends "aplicacion/index.html" %}
+
+{% block titulo %}
+    <div class="masthead-subheading">Verifica la lista de</div>
+    <div class="masthead-heading text-uppercase">Clientes</div>
+{% endblock titulo %}
+
+
+{% block contenido %}
+<section class="page-section" id="clientes">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Lista de Clientes</h2>
+            <h3 class="section-subheading text-muted">La lista a continuación representan los clientes frecuentes</h3>
+        </div>
+    </div>
+
+<table class="table table-striped">
+    <!-- Encabezado de la tabla -->
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Placa</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th># Visitas</th>
+        </tr>
+    </thead>
+    <!-- Contenido de la tabla -->
+    <tbody>
+        {% for c in clientes %}
+        <tr>
+            <td>{{c.nombre}}</td>
+            <td>{{c.apellido}}</td>
+            <td>{{c.placa}}</td>
+            <td>{{c.marca}}</td>
+            <td>{{c.modelo}}</td>
+            <td>{{c.visitas}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+
+</table>
+
+
+
+</section>
+{% endblock contenido %}
