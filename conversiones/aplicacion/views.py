@@ -94,3 +94,46 @@ def homologacionForm(request):
     else:
         miForm = HomologacionForm()
     return render(request, "aplicacion/homologacionForm.html", {"form":miForm})
+
+#_______________ Funciones para buscar en cada una de las tablas de la base de datos.
+#_________________________________________Buscar Cliente
+def buscarCliente (request):
+    return render(request, "aplicacion/buscarClientes.html")
+
+def encontrarCliente(request):
+    if request.GET["buscar"]:
+        patron = request.GET["buscar"]
+        clientes = Cliente.objects.filter(nombre__icontains=patron)
+        contexto = {"clientes":clientes}
+        return render (request,"aplicacion/clientes.html",contexto)
+
+    contexto = {'clientes':Cliente.objects.all()}
+    return render (request, "aplicacion/clientes.html")
+
+#_________________________________________Buscar Asesor
+def buscarAsesor (request):
+    return render(request, "aplicacion/buscarAsesores.html")
+
+def encontrarAsesor(request):
+    if request.GET["buscar"]:
+        patron = request.GET["buscar"]
+        asesores = Asesor.objects.filter(nombre__icontains=patron)
+        contexto = {"asesores":asesores}
+        return render (request,"aplicacion/asesores.html",contexto)
+
+    contexto = {'asesores':Asesor.objects.all()}
+    return render (request, "aplicacion/asesores.html")
+
+#_________________________________________Buscar Homologacion
+def buscarHomologacion (request):
+    return render(request, "aplicacion/buscarHomologaciones.html")
+
+def encontrarHomologacion(request):
+    if request.GET["buscar"]:
+        patron = request.GET["buscar"]
+        homologaciones = Homologacion.objects.filter(marca__icontains=patron)
+        contexto = {"homologaciones":homologaciones}
+        return render (request,"aplicacion/homologaciones.html",contexto)
+
+    contexto = {'homologaciones':Homologacion.objects.all()}
+    return render (request, "aplicacion/homologaciones.html")

@@ -1,0 +1,21 @@
+{% extends "aplicacion/index.html" %}
+
+{% block titulo %}
+    <div class="masthead-subheading">Buscar en los elementos de</div>
+    <div class="masthead-heading text-uppercase">Asesores</div>
+
+{% endblock titulo %}
+
+
+{% block contenido %}
+<center>
+    <br><br/>
+<form action="{% url 'encontrar_asesores' %}" method="get">
+    {% csrf_token %}
+    <p>Ingrese el Nombre del Asesor a Buscar: <input type="text" name="buscar" id ="buscar"></p>
+    <br><br/>
+    <input  class="btn btn-primary btn-xl text-uppercase" type="submit" value="Buscar">
+</form>
+
+</center>
+{% endblock contenido %}
